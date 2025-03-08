@@ -64,11 +64,4 @@ In the realm of healthcare, time optimization is crucial. This document introduc
 1. Install the `requirements.txt` in the different folder.
 2. Run `main.py`!
 
-## Contact
-
-If you have any questions, suggestions, or would like to contribute, feel free to reach out:
-
-- **Email:** [tanmayarora118@gmail.com](mailto:tanmayarora118@gmail.com)
-- **LinkedIn:** [Tanmay Arora](https://www.linkedin.com/in/tanmaycode1)
-
 Thank you for exploring MedUrgencyHub - where time meets healthcare efficiency!
