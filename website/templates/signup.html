@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Medical Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="icon" href="../static/images/Finman_copy-removebg-preview.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="sign-up-card-container">
+        <div class="main-image">
+            <img src="https://img.freepik.com/free-vector/medical-video-call-consultation-illustration_88138-415.jpg?w=1200" 
+                 alt="Medical consultation illustration">
+        </div>
+
+        <div class="sign-up-container">
+            <div class="header">
+                <h1>Create Account</h1>
+                <div>Join our medical platform today</div>
+            </div>
+
+            <form method="POST" class="sign-up-form">
+                <div class="form-item">
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone" 
+                           placeholder="Mobile number" 
+                           maxlength="100" 
+                           required 
+                           autofocus>
+                    <span class="material-symbols-rounded">smartphone</span>
+                </div>
+
+                <div class="form-item">
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           placeholder="Full name" 
+                           maxlength="100" 
+                           required>
+                    <span class="material-symbols-rounded">person</span>
+                </div>
+
+                <div class="form-item">
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           placeholder="Email address" 
+                           maxlength="100" 
+                           required>
+                    <span class="material-symbols-rounded">mail</span>
+                </div>
+
+                <div class="form-item">
+                    <input type="password" 
+                           id="password" 
+                           name="password" 
+                           placeholder="Create password" 
+                           maxlength="100" 
+                           required>
+                    <span class="material-symbols-rounded">lock</span>
+                </div>
+
+                <button type="submit" id="submit">Create Account</button>
+
+                <div class="form-item-footer">
+                    Already have an account?
+                    <a href="/login" id="account">Sign In</a>
+                </div>
+            </form>
+
+            <a href="/" class="home-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     width="30" 
+                     height="32" 
+                     viewBox="0 0 24 24" 
+                     stroke-width="1.5" 
+                     fill="none" 
+                     stroke-linecap="round" 
+                     stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                    <rect x="10" y="12" width="4" height="4" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <script>
+                    Swal.fire({
+                        title: "{{ category.title() }}!",
+                        text: "{{ message }}",
+                        icon: "{{ category }}" == "danger" ? "error" : "{{ category }}",
+                        confirmButtonColor: '#2563eb'
+                    });
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

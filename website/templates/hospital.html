@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile | MedUrgencyHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patient_details.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="nav-left">
+                <a href="/" class="back-button">
+                    <span class="material-symbols-rounded">arrow_back</span>
+                    Back to Home
+                </a>
+                <div class="navbar-title">
+                    <span class="material-symbols-rounded">medical_services</span>
+                    Patient Information
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Patient Overview -->
+        <section class="patient-overview">
+            <div class="patient-avatar">
+                <span class="material-symbols-rounded">person</span>
+            </div>
+            <div class="patient-info">
+                <h1>{{data[0]}}</h1>
+                <p>{{data[8]}} years • {{data[3]}} • Blood Group {{data[5]}}</p>
+            </div>
+            <div class="emergency-contact">
+                <div class="label">Emergency Contact</div>
+                <div class="phone">{{data[2]}}</div>
+            </div>
+        </section>
+
+        <!-- Personal Details -->
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-label">
+                    <span class="material-symbols-rounded">badge</span>
+                    Aadhaar Number
+                </div>
+                <div class="detail-value">{{data[4]}}</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">
+                    <span class="material-symbols-rounded">call</span>
+                    Contact Number
+                </div>
+                <div class="detail-value">{{data[9]}}</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">
+                    <span class="material-symbols-rounded">home</span>
+                    Address
+                </div>
+                <div class="detail-value">{{data[1]}}</div>
+            </div>
+        </div>
+
+        <!-- Medical Information -->
+        <section class="medical-info">
+            <h2 class="section-title">
+                <span class="material-symbols-rounded">medical_information</span>
+                Medical Information
+            </h2>
+            <div class="medical-grid">
+                <div class="detail-card">
+                    <div class="detail-label">
+                        <span class="material-symbols-rounded">healing</span>
+                        Medical Conditions
+                    </div>
+                    <div class="detail-value">{{data[6] if data[6] else 'No known medical conditions'}}</div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">
+                        <span class="material-symbols-rounded">warning</span>
+                        Allergies
+                    </div>
+                    <div class="detail-value">{{data[7] if data[7] else 'No known allergies'}}</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Button -->
+        <button class="emergency-button" onclick="reportEmergency()">
+            <span class="material-symbols-rounded">emergency</span>
+            Report Emergency
+        </button>
+    </div>
+
+    <script>
+        function reportEmergency() {
+            if (confirm('Are you sure you want to report an emergency?')) {
+                // Add your emergency reporting logic here
+                alert('Emergency services have been notified.');
+            }
+        }
+    </script>
+</body>
+</html>
